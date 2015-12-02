@@ -2,14 +2,17 @@ Title: Santa Sorts By Example
 Topic: Sort::ByExample
 Author: Olaf Alders <olaf@wundersolutions.com>
 
+=head1 SANTA SORTS BY EXAMPLE
+
 For years Santa has resisted the urge to purchase a self-driving sleigh, but the figures published by recent studies have finally convinced him that an autonomous sled might be safer than one being driven by a man who has been up for 24 hours straight.  Plus, this also allows him to update this Facebook status without having to worry about colliding with other air traffic.
 
-Most of the (literal) bells and whistles on the sleigh come pre-configured.  The only thing Santa really has to worry about is order in which his reindeer will be set before the sleigh takes off.  (Keep in mind, this sleigh may be self driving, but it's not electric).
+Most of the (literal) bells and whistles on the sleigh come pre-configured.  The only thing Santa really has to worry about is the order in which his reindeer will line up before the sleigh takes off.  (Keep in mind, this sleigh may be self driving, but it's not electric).
 
 For years Santa has called out to his reindeer in a very specific order.  Perhaps you're familiar with it?  Let's just confirm the setup.  Rudolph (a 20th century addition to the team) leads and lights the way.  After that it's: Dasher, Dancer, Prancer, Vixen, Comet, Cupid, Donner and Blitzen.  There's some argument over the spelling of the last two names.  If in doubt, refer to L<Wikipedia|https://en.wikipedia.org/wiki/Santa_Claus%27s_reindeer>.
 
 If any of these reindeer were to take sick, the stand-in reindeer would have to move to the back of the line.  After all, if you've been doing this for over a century, seniority certain enters into the picture.  In order to ensure that the reindeer are guided in the correct order by the self-driving sleigh, Santa reaches into his bag of tricks and scripts up a little something in Perl.  It looks a little like this:
 
+    #!perl
     #!/usr/bin/env perl;
     
     use strict;
@@ -35,6 +38,7 @@ If any of these reindeer were to take sick, the stand-in reindeer would have to 
 
 This yields the following output:
 
+    #!perl
     [
         [0] "Rudolph",
         [1] "Dasher",
@@ -59,6 +63,7 @@ Looking at the output we can see that:
 
 So far, so good.  Now let's introduce some secondary sorting.  Right now the stand-ins are appearing in the order in which they were originally provided.  Let's sort them alphabetically.
 
+    #!perl
     #!/usr/bin/env perl;
     
     use strict;
@@ -90,6 +95,7 @@ So far, so good.  Now let's introduce some secondary sorting.  Right now the sta
 
 This yields:
 
+    #!perl
     [
         [0] "Rudolph",
         [1] "Dasher",
@@ -106,8 +112,9 @@ All we've done here is add a very simple fallback subroutine, which dictates a s
 
 Notice that the order of the first four reindeer has not changed, but our stand-ins are now sorted, as we hoped they would be.
 
-Alphabetical order is kind of arbitrary.  What if we wanted to perform the secondary sort according to something more meaningful, like seniority?  That way both the entire line of reindeer would be sorted according to seniority.
+Alphabetical order is kind of arbitrary.  What if we wanted to perform the secondary sort according to something more meaningful, like seniority?
 
+    #!perl
     #!/usr/bin/env perl;
     
     use strict;
@@ -150,6 +157,7 @@ Alphabetical order is kind of arbitrary.  What if we wanted to perform the secon
 
 This yields:
 
+    #!perl
     [
         [0] {
             name      => "Rudolph",
@@ -197,6 +205,7 @@ Now, what should we do if there's a tie in seniority, as in the case of Zeke and
 
 That leaves us with:
 
+    #!perl
     #!/usr/bin/env perl;
     
     use strict;
@@ -239,6 +248,7 @@ That leaves us with:
 
 Which yields:
 
+    #!perl
     [
         [0] {
             name      => "Rudolph",
@@ -283,3 +293,13 @@ Now in the case of Zeke and Audrey, the tiebreaker kicks in and we've got a tert
 That's it.  Now Santa can relax.  His reindeer will be queued up in the correct order and his self-driving sleigh will rest assured that it has the correct order in which to call out their names.
 
 Now, as Santa sits back and enjoys the ride, he thinks of other ways in which he can impose arbitrarily complex sort orders.  Perhaps the naughty and nice list is the next logical place?
+
+=head1 See Also
+
+=over
+
+=item *
+
+L<Sort::ByExample>
+
+=back

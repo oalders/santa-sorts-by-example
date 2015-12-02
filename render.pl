@@ -28,7 +28,9 @@ sub prepend_text {
     }
 
     # DDP output will already contain newlines
-    return mark_raw( join $lines[0] =~ m{\n} ? q{} : "\n", @lines );
+    my $syntax_marker = "    #!perl\n";
+    return mark_raw( $syntax_marker . join $lines[0] =~ m{\n} ? q{} : "\n",
+        @lines );
 }
 
 my $tx = Text::Xslate->new(
@@ -36,5 +38,4 @@ my $tx = Text::Xslate->new(
     syntax => 'TTerse'
 );
 
-path( 'README.txt' )
-    ->spew( $tx->render( 'blog-post.pod', \%vars ) );
+path( 'README.txt' )->spew( $tx->render( 'blog-post.pod', \%vars ) );
